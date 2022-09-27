@@ -15,15 +15,15 @@ class App extends React.Component {
     console.log(this.state.searchQuery);
   }
 
-  handleSearch = async (e) => {
+  // handleSearch = async (e) => {
     
-    try {
-      const API = `https://usl.locationiq.com/vl/search.php?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&q=${this.state.searchQuery}&format=json`;
+  //   try {
+  //     const API = `https://usl.locationiq.com/vl/search.php?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&q=${this.state.searchQuery}&format=json`;
 
-    } catch (error) {
+  //   } catch (error) {
 
-    }
-  }
+  //   }
+  // }
 
   render() {
     return(
