@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
+import Card from 'react-bootstrap/Card';
+import Weather from 'react-bootstrap/Weather';
 
 class CityResults extends React.Component {
     render() {
@@ -12,9 +14,27 @@ class CityResults extends React.Component {
             {this.props.searchLocation.lon}
           </h2>
         </div>
-        <div id="map">
-          <Image className="img-fluid border" src={this.props.map} rounded />
+        <div id="weather-map">
+        <div id="weather">
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title className="mb-2">Weather Forecast</Card.Title>
+                {this.props.weather.map((e, i) => {
+                  return (
+                    <Weather
+                      key={i}
+                      date={e.date}
+                      description={e.description}
+                    />
+                  );
+                })}
+              </Card.Body>
+            </Card>
+            <div id="map">
+              <Image className="img-fluid" src={this.props.map} rounded />
+            </div>
         </div>
+      </div>
       </div>
         );
     }
