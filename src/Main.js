@@ -15,9 +15,11 @@ class Main extends React.Component {
         this.state = {
             searchQuery: '',
             searchLocation: {},
+            searchText: '',
             map: '',
             errorOccur: [false, ''],
             setShow: false,
+            weather: [],
         }
     }
 
@@ -32,13 +34,15 @@ class Main extends React.Component {
     handleSearch = async (e) => {
     
         try {
-          const API = `https://usl.locationiq.com/vl/search.php?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&q=${this.state.searchQuery}&format=json`;
+          // city search API
+          let API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&q=${this.state.searchQuery}&format=json`;
           const searchResults = await axios.get(API);
           this.setState({ searchLocation: searchResults.data[0]});
           setTimeout(e => {
-            this.state({
-              map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.searchLocation.lat},${this.state.searchLocation.lon}&zoom=10`,
+            this.setState({
+              map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&center=${this.state.searchLocation.lat},${this.state.searchLocation.lon}&zoom=10`,
             });
+            this.weatherSearch();
           }, 0);
           this.setState({setShow: false});
     
@@ -48,6 +52,13 @@ class Main extends React.Component {
           });
         }
       };
+
+      weatherSearch = async () => {
+        // API for weather
+        const API = `${this.state.serverUrl}/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
+        const weatherResponse = await axios.get(API);
+        this.setState({weather: weatherResponse.data});
+      }
     
     //   render() {
     //     return(
@@ -77,7 +88,7 @@ class Main extends React.Component {
                   </Form.Group>
                 </Col>
                 <Col xs={12} md={8} className="">
-                  <Button variant="secondary" size="md" onClick={this.doSearch}>
+                  <Button variant="secondary" size="md" onClick={this.handleSearch}>
                     Explore!
                   </Button>
                 </Col>
@@ -97,6 +108,7 @@ class Main extends React.Component {
             <CityResults
               searchLocation={this.state.searchLocation}
               map={this.state.map}
+              weather={this.state.weather}
             />
           </>
         )}
