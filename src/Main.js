@@ -20,6 +20,8 @@ class Main extends React.Component {
             errorOccur: [false, ''],
             setShow: false,
             weather: [],
+            movies: [],
+            serverUrl: 'https://city-explorador.herokuapp.com',
         }
     }
 
@@ -55,10 +57,17 @@ class Main extends React.Component {
 
       weatherSearch = async () => {
         // API for weather
-        const API = `${this.state.serverUrl}/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
-        const weatherResponse = await axios.get(API);
+        const api = `${this.state.serverUrl}/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
+        const weatherResponse = await axios.get(api);
         this.setState({weather: weatherResponse.data});
       }
+
+      movieSearch = async () => {
+        // API for movies
+        const api = `${this.state.serverUrl}/movies?searchQuery=${this.state.searhText}`;
+        const moviesResponse = await axios.get(api);
+        this.setState({movies: moviesResponse.data});
+      };
     
     //   render() {
     //     return(
@@ -109,6 +118,7 @@ class Main extends React.Component {
               searchLocation={this.state.searchLocation}
               map={this.state.map}
               weather={this.state.weather}
+              movies={this.state.weather}
             />
           </>
         )}
