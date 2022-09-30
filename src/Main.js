@@ -21,7 +21,8 @@ class Main extends React.Component {
             setShow: false,
             weather: [],
             movies: [],
-            serverUrl: 'https://city-explorador.herokuapp.com',
+            // serverUrl: 'https://city-explorador.herokuapp.com',
+            // serverUrl: 'localhost:3001'
         }
     }
 
@@ -57,14 +58,16 @@ class Main extends React.Component {
 
       weatherSearch = async () => {
         // API for weather
-        const api = `${this.state.serverUrl}/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
-        const weatherResponse = await axios.get(api);
+        const API = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
+        // const API = `localhost:3001/weather?searchQuery=${this.state.searchText}&lat=${this.state.searchLocation.lat}&lon=${this.state.searchLocation.lon}`;
+        const weatherResponse = await axios.get(API);
         this.setState({weather: weatherResponse.data});
       }
 
       movieSearch = async () => {
         // API for movies
-        const api = `${this.state.serverUrl}/movies?searchQuery=${this.state.searhText}`;
+        const api = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.searhText}`;
+        // const api = `localhost:3001/movies?searchQuery=${this.state.searhText}`;
         const moviesResponse = await axios.get(api);
         this.setState({movies: moviesResponse.data});
       };
