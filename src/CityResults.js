@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Weather from 'react-bootstrap/Weather';
@@ -30,11 +31,18 @@ class CityResults extends React.Component {
                 })}
               </Card.Body>
             </Card>
+            </div>
+            <div id='movies'>
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title className="mb-2">Weather Forecast</Card.Title>
+              </Card.Body>
+                </Card>
+                </div>
             <div id="map">
               <Image className="img-fluid" src={this.props.map} rounded />
             </div>
         </div>
-      </div>
       </div>
         );
     }
