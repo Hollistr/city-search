@@ -21,8 +21,8 @@ class Main extends React.Component {
             setShow: false,
             weather: [],
             movies: [],
-            // serverUrl: 'https://city-explorador.herokuapp.com',
-            // serverUrl: 'localhost:3001'
+            serverUrl: 'https://city-explorador.herokuapp.com',
+            serverUrl: 'localhost:3001'
         }
     }
 

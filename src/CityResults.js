@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Weather from './Weather.js';
+import Movies from './Movies.js';
 
 class CityResults extends React.Component {
     render() {
