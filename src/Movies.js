@@ -7,7 +7,7 @@ class Movies extends React.Component {
         return (
           <Card style={{ width: '18rem' }}>
               <Card.Body>
-                <Card.Title className="mb-2">Weather Forecast</Card.Title>
+                <Card.Title className="mb-2">Local Movies</Card.Title>
                 {this.props.movies.map((e, i) => {
                   return <Movie key={i} movie={e} />;
                 })}

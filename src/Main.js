@@ -46,6 +46,7 @@ class Main extends React.Component {
               map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_SEARCH_IQ_KEY}&center=${this.state.searchLocation.lat},${this.state.searchLocation.lon}&zoom=10`,
             });
             this.weatherSearch();
+            this.movieSearch();
           }, 0);
           this.setState({setShow: false});
     
