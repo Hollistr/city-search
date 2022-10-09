@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import Weather from './Weather.js';
 import Movies from './Movies.js';
 
@@ -18,7 +18,15 @@ class CityResults extends React.Component {
         </div>
         <div id="weather-map">
         <div id="weather">
-            <Card style={{ width: '18rem' }}>
+          <Weather weather={this.props.weather} />
+          </div>
+          <div id="movies">
+            <Movies movies={this.props.movies} />
+          </div>
+          <div id="map">
+            <Image className="img-fluid" src={this.props.map} rounded />
+          </div>
+            {/* <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <Card.Title className="mb-2">Weather Forecast</Card.Title>
                 {this.props.weather.map((e, i) => {
@@ -39,7 +47,7 @@ class CityResults extends React.Component {
                 <Card.Title className="mb-2">Weather Forecast</Card.Title>
               </Card.Body>
                 </Card>
-                </div>
+                </div> */}
             <div id="map">
               <Image className="img-fluid" src={this.props.map} rounded />
             </div>
