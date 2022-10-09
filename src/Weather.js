@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
+import WeatherDay from './WeatherDay'
 
 class Weather extends React.Component {
     render() {
@@ -8,8 +9,8 @@ class Weather extends React.Component {
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <Card.Title className="mb-2">Weather Forecast</Card.Title>
-                {this.props.movies.map((e, i) => {
-                  return <Movie key={i} movie={e} />;
+                {this.props.weather.map((e, i) => {
+                  return <WeatherDay key={i} date={e.date} description={e.description} />;
                 })}
               </Card.Body>
           </Card>
